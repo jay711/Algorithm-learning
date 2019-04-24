@@ -25,3 +25,27 @@ def insert(data):
             data[n0+1] = data[n0]   #就把所有元素往后推一个位置
             n0 = n0-1
 data[n0+1] = tmp #最小的元素放到第一个位置
+
+#快速排序
+def kuaisu(d,size,lf,rg): #定义快速排序函数，第一项键值为 d[lf],size 为数组长度
+     if lf<rg:  #排序数据的左边与右边
+         lf_idx = lf+1  
+         while d[lf_idx]<d[lf]:  #从左到右，找出大于键值K的“i”，其中键值K为d[lf]
+             if lf_idx+1>size:
+                break
+             lf_idx += 1
+         rg_idx = rg
+         while d[rg_idx] > d[lf]: #从右向左，找出小于键值K的“j”
+             rg_idx -=1
+         while lf_idx < rg_idx:  # 假如 i<j
+             d[lf_idx],d[rg_idx] = d[rg_idx],d[lf_idx]  #那么Ki与Kj互换
+             lf_idx +=1  #回到步骤（2）
+             while d[lf_idx]<d[lf]:
+                lf_idx += 1
+             rg_idx -= 1
+             while d[rg_idx] >d[lf]:
+                rg_idx -=1
+         d[lf],d[rg_idx] = d[rg_idx],d[lf]  #直到i>+j,就将K与Kj交换
+         
+         kuaisu(d,size,lf,rg_idx-1)   #以rg_idx为基准点分成左右两半以递归方式
+         kuaisu(d,size,rg_idx+1,rg)   #分别以左右两半进行排序直至完成排序
