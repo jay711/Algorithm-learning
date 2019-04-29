@@ -36,3 +36,4 @@ def bin_search(data,val):
             return mid
     return -1
 ```
+#
