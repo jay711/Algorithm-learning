@@ -49,3 +49,5 @@ def kuaisu(d,size,lf,rg): #定义快速排序函数，第一项键值为 d[lf],s
          
          kuaisu(d,size,lf,rg_idx-1)   #以rg_idx为基准点分成左右两半以递归方式
          kuaisu(d,size,rg_idx+1,rg)   #分别以左右两半进行排序直至完成排序
+
+# 这是一条测试行
